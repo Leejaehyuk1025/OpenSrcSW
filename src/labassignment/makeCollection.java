@@ -22,8 +22,9 @@ import org.w3c.dom.Element;
 
 public class makeCollection {
 	
-	makeCollection() throws ParserConfigurationException, IOException, TransformerException {
-		File dir = new File("C:\\Users\\dusk3\\Desktop\\OpenSW_week2\\week2_html");
+	makeCollection(String input) throws ParserConfigurationException, IOException, TransformerException {
+		File dir = new File(input);
+		//"C:\\Users\\dusk3\\Desktop\\OpenSW_week2\\week2_html"
 		File files[] = dir.listFiles();
 	
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();

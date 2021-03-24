@@ -30,9 +30,10 @@ import org.xml.sax.SAXException;
 
 public class makeKeyword {
 
-	makeKeyword() throws SAXException, IOException, ParserConfigurationException, XPathExpressionException, TransformerFactoryConfigurationError, TransformerException{
-		String inputFile = "C:\\Users\\dusk3\\collection.xml";
-		String outputFile = "C:\\Users\\dusk3\\keyword.xml"; 
+	makeKeyword(String input) throws SAXException, IOException, ParserConfigurationException, XPathExpressionException, TransformerFactoryConfigurationError, TransformerException{
+		String inputFile = input;
+		
+		String outputFile = "C:\\Users\\dusk3\\Desktop\\keyword.xml"; 
 	
 		Document docc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(inputFile));
 

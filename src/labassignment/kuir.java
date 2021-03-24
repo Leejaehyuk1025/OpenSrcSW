@@ -43,106 +43,19 @@ import java.io.FileReader;
 public class kuir {
     public static void main(String[] args) throws IOException, TransformerException, ParserConfigurationException, SAXException, XPathExpressionException{
     	
-    	makeCollection a = new makeCollection();
-    	makeKeyword b = new makeKeyword();
-    	
-    	/*File dir = new File("C:\\Users\\dusk3\\Desktop\\OpenSW_week2\\week2_html");
-    	File files[] = dir.listFiles();
-    	
-    	DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-    	DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-    	
-    	Document doc = docBuilder.newDocument();
-    	
-    	//docs element
-    	Element docs = doc.createElement("docs");
-    	doc.appendChild(docs);
-    	
-    	int number = 0;
-    	
-    	for(int i=0;i<files.length;i++) {
-    		
-        	//code element
-        	Element code = doc.createElement("doc");
-    		docs.appendChild(code);
-    	
-    		//attribute type = id
-    		code.setAttribute("id", String.valueOf(number));
-    		
-    		org.jsoup.nodes.Document doc1 = Jsoup.parse(files[number], "UTF-8");
-    		org.jsoup.nodes.Element content = doc1.getElementById("content");
-    		org.jsoup.nodes.Document doc2 = Jsoup.parse(files[number], "UTF-8");
-    		Elements content1 = doc2.getElementsByTag("title");
-    		
-    		//title element
-    		Element title = doc.createElement("title");
-    		title.appendChild(doc.createTextNode(content1.text()));
-    		code.appendChild(title);
-    	
-    	
-    		//body element
-    		Element body = doc.createElement("body");
-    		body.appendChild(doc.createTextNode(content.text()));
-    		code.appendChild(body);
-    	
-    	
-    		number++;
+    	if(args.length != 2) {
+    		System.out.println("Fail");
+    		System.exit(0);
     	}
     	
+    	if(args[0].equals("-c")) {
+    		makeCollection a = new makeCollection(args[1]);
+    	}
+    	if(args[0].equals("-k")) {
+    		makeKeyword b = new makeKeyword(args[1]);
+    	}
+    	else {}
     	
-    	TransformerFactory transformerFactory = TransformerFactory.newInstance();
-    	
-    	Transformer transformer = transformerFactory.newTransformer();
-    	transformer.setOutputProperty(OutputKeys.ENCODING,"UTF-8");
-
-        DOMSource source = new DOMSource(doc);
-    	StreamResult result = new StreamResult(new FileOutputStream(new File("C:\\Users\\dusk3\\collection.xml")));
-    	
-    	transformer.transform(source, result);
-    	
-    	///////////////////////////////////////////////////////////////////////////////////////////////////////
-    	
-    	String inputFile = "C:\\Users\\dusk3\\collection.xml";
-    	String outputFile = "C:\\Users\\dusk3\\keyword.xml"; 
-    	
-    	Document docc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(inputFile));
-
-    	// locate the node(s)
-    	XPath xpath = XPathFactory.newInstance().newXPath(); */
-    	// NodeList nodes = (NodeList)xpath.evaluate("//*/body", docc, XPathConstants.NODESET);
-/////////////////////
-    	
-    	/*KeywordExtractor ke = new KeywordExtractor();
-    	
-    	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder documentBuilder = factory.newDocumentBuilder();
-		Document document = documentBuilder.parse(inputFile);
-		
-		Element root = document.getDocumentElement();
-		NodeList childeren = root.getChildNodes();
-		
-		for(int i = 0; i < childeren.getLength(); i++){
-			Node node1 = childeren.item(i);
-			Element ele = (Element) node1;
-			NodeList childeren2 = ele.getChildNodes();
-			Element elele = (Element) childeren2.item(1);
-			
-			KeywordList kl = ke.extractKeyword(elele.getTextContent() , true);
-	    	
-			String a = "";
-			
-	    	for(int j=0 ; j<kl.size() ; j++) {
-	    		Keyword kwrd = kl.get(j);
-	    		a += kwrd.getString() + ":" + kwrd.getCnt() + "#";
-	    	}
-	    	
-	    	nodes.item(i).setTextContent(a);
-			
-		}
-		
-		// save the result
-    	Transformer xformer = TransformerFactory.newInstance().newTransformer();
-    	xformer.transform(new DOMSource(docc), new StreamResult(new File(outputFile)));*/
 		
     }
 }
