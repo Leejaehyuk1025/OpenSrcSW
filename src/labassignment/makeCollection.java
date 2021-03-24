@@ -23,6 +23,7 @@ import org.w3c.dom.Element;
 public class makeCollection {
 	
 	makeCollection(String input) throws ParserConfigurationException, IOException, TransformerException {
+		
 		File dir = new File(input);
 		//"C:\\Users\\dusk3\\Desktop\\OpenSW_week2\\week2_html"
 		File files[] = dir.listFiles();
@@ -48,19 +49,20 @@ public class makeCollection {
 			code.setAttribute("id", String.valueOf(number));
 		
 			org.jsoup.nodes.Document doc1 = Jsoup.parse(files[number], "UTF-8");
-			org.jsoup.nodes.Element content = doc1.getElementById("content");
+			org.jsoup.nodes.Element content1 = doc1.getElementById("content");
+			
 			org.jsoup.nodes.Document doc2 = Jsoup.parse(files[number], "UTF-8");
-			Elements content1 = doc2.getElementsByTag("title");
+			Elements content2 = doc2.getElementsByTag("title");
 			
 			//title element
 			Element title = doc.createElement("title");
-			title.appendChild(doc.createTextNode(content1.text()));
+			title.appendChild(doc.createTextNode(content2.text()));
 			code.appendChild(title);
 	
 	
 			//body element
 			Element body = doc.createElement("body");
-			body.appendChild(doc.createTextNode(content.text()));
+			body.appendChild(doc.createTextNode(content1.text()));
 			code.appendChild(body);
 	
 	
@@ -74,7 +76,7 @@ public class makeCollection {
 		transformer.setOutputProperty(OutputKeys.ENCODING,"UTF-8");
 
 		DOMSource source = new DOMSource(doc);
-		StreamResult result = new StreamResult(new FileOutputStream(new File("C:\\Users\\dusk3\\collection.xml")));
+		StreamResult result = new StreamResult(new FileOutputStream(new File("C:\\Users\\dusk3\\Desktop\\collection.xml")));
 	
 		transformer.transform(source, result);
 	}

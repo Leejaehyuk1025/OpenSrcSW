@@ -31,8 +31,8 @@ import org.xml.sax.SAXException;
 public class makeKeyword {
 
 	makeKeyword(String input) throws SAXException, IOException, ParserConfigurationException, XPathExpressionException, TransformerFactoryConfigurationError, TransformerException{
-		String inputFile = input;
 		
+		String inputFile = input;
 		String outputFile = "C:\\Users\\dusk3\\Desktop\\keyword.xml"; 
 	
 		Document docc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(inputFile));
@@ -48,16 +48,17 @@ public class makeKeyword {
 		DocumentBuilder documentBuilder = factory.newDocumentBuilder();
 		Document document = documentBuilder.parse(inputFile);
 	
-		Element root = document.getDocumentElement();
-		NodeList childeren = root.getChildNodes();
+		Element ele1 = document.getDocumentElement();
+		NodeList children1 = ele1.getChildNodes();
 	
-		for(int i = 0; i < childeren.getLength(); i++){
-			Node node1 = childeren.item(i);
-			Element ele = (Element) node1;
-			NodeList childeren2 = ele.getChildNodes();
-			Element elele = (Element) childeren2.item(1);
+		for(int i = 0; i < children1.getLength(); i++){
+			
+			Node node1 = children1.item(i);
+			Element ele2 = (Element) node1;
+			NodeList children2 = ele2.getChildNodes();
+			Element ele3 = (Element) children2.item(1);
 		
-			KeywordList kl = ke.extractKeyword(elele.getTextContent() , true);
+			KeywordList kl = ke.extractKeyword(ele3.getTextContent() , true);
     	
 			String a = "";
 		
@@ -73,6 +74,7 @@ public class makeKeyword {
 		// save the result
 		Transformer xformer = TransformerFactory.newInstance().newTransformer();
 		xformer.transform(new DOMSource(docc), new StreamResult(new File(outputFile)));
+		
 		}
 	
 }

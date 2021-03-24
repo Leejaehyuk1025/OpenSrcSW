@@ -51,10 +51,12 @@ public class kuir {
     	if(args[0].equals("-c")) {
     		makeCollection a = new makeCollection(args[1]);
     	}
-    	if(args[0].equals("-k")) {
+    	else if(args[0].equals("-k")) {
     		makeKeyword b = new makeKeyword(args[1]);
     	}
-    	else {}
+    	else {
+    		System.out.println("올바르지 않은 명령");
+    	}
     	
 		
     }
