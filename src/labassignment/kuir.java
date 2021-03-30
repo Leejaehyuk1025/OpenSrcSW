@@ -1,8 +1,11 @@
 package labassignment;
 
 import java.lang.Object;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectOutputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -38,10 +41,11 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 
 
-
  
 public class kuir {
     public static void main(String[] args) throws IOException, TransformerException, ParserConfigurationException, SAXException, XPathExpressionException{
+    	
+    	    	
     	
     	if(args.length != 2) {
     		System.out.println("Fail");
@@ -53,6 +57,9 @@ public class kuir {
     	}
     	else if(args[0].equals("-k")) {
     		makeKeyword b = new makeKeyword(args[1]);
+    	}
+    	else if(args[0].contentEquals("-i")) {
+    		indexer c = new indexer(args[1]);
     	}
     	else {
     		System.out.println("올바르지 않은 명령");
