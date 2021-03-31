@@ -181,13 +181,13 @@ public class indexer {
     	}
     	
     	
+    	/*for(String ajaj:hashmap.keySet()) {
+    		ArrayList<Double> ar = hashmap.get(ajaj);
+    		System.out.println("[Key]:"+ajaj+"[Value]:"+ar);
+    	}*/ 
+    	//출력잘되나 확인.
     	
-    	for(String kkk : totalname) {
-    		System.out.print(kkk);
-    		System.out.println(hashmap.get(kkk));
-    		
-    		
-    	}
+    	
     	
     	FileOutputStream fileStream = new FileOutputStream(output);
     	
@@ -197,7 +197,6 @@ public class indexer {
     	
     	objectOutputStream.close();
     
-    	System.out.println(hashmap);
 		
 		
 	}
