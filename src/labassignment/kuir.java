@@ -58,8 +58,11 @@ public class kuir {
     	else if(args[0].equals("-k")) {
     		makeKeyword b = new makeKeyword(args[1]);
     	}
-    	else if(args[0].contentEquals("-i")) {
+    	else if(args[0].equals("-i")) {
     		indexer c = new indexer(args[1]);
+    	}
+    	else if(args[0].equals("-i")) {
+    		indexer s = new indexer(args[1]);
     	}
     	else {
     		System.out.println("올바르지 않은 명령");
