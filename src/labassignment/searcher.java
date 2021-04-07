@@ -23,9 +23,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class searcherr {
+public class searcher {
 	
-	searcherr(String inputQuery, String inputPost) throws IOException, ClassNotFoundException, ParserConfigurationException, SAXException{
+	searcher(String inputQuery, String inputPost) throws IOException, ClassNotFoundException, ParserConfigurationException, SAXException{
 		
 		String query = inputQuery;
 		
