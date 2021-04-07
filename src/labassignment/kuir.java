@@ -43,14 +43,9 @@ import java.io.FileReader;
 
  
 public class kuir {
-    public static void main(String[] args) throws IOException, TransformerException, ParserConfigurationException, SAXException, XPathExpressionException{
+    public static void main(String[] args) throws IOException, TransformerException, ParserConfigurationException, SAXException, XPathExpressionException, ClassNotFoundException{
     	
     	    	
-    	
-    	if(args.length != 2) {
-    		System.out.println("Fail");
-    		System.exit(0);
-    	}
     	
     	if(args[0].equals("-c")) {
     		makeCollection a = new makeCollection(args[1]);
@@ -61,8 +56,8 @@ public class kuir {
     	else if(args[0].equals("-i")) {
     		indexer c = new indexer(args[1]);
     	}
-    	else if(args[0].equals("-i")) {
-    		indexer s = new indexer(args[1]);
+    	else if(args[0].equals("-s")) {
+    		searcherr s = new searcherr(args[1], args[2]);
     	}
     	else {
     		System.out.println("올바르지 않은 명령");

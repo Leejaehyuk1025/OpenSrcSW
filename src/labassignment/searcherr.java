@@ -25,9 +25,9 @@ import org.xml.sax.SAXException;
 
 public class searcherr {
 	
-	searcherr(String input1) throws IOException, ClassNotFoundException, ParserConfigurationException, SAXException{
+	searcherr(String inputQuery, String inputPost) throws IOException, ClassNotFoundException, ParserConfigurationException, SAXException{
 		
-		String query = input1;
+		String query = inputQuery;
 		
 		KeywordExtractor ke1 = new KeywordExtractor();
 		
@@ -57,7 +57,8 @@ public class searcherr {
 		//System.out.println(queryCount); 1 1 1 1 
 		
 		
-		String inputFile = "C:\\Users\\dusk3\\Desktop\\index.post";
+		String inputFile = inputPost; 
+				//"C:\\Users\\dusk3\\Desktop\\index.post";
 		
 		FileInputStream fileStream = new FileInputStream(inputFile);
 		ObjectInputStream objectInputStream = new ObjectInputStream(fileStream);
@@ -177,9 +178,10 @@ public class searcherr {
 		
 		Arrays.sort(compareArray);
 		
+		int rank=1;
+		
 		for(int k=4;k>1;k--) {
-			int rank=1;
-			
+					
 			if(compareArray[k] == totalImportant[0]) {
 				if(confirm[0]==0) {
 					confirm[0]=1;
