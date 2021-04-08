@@ -57,7 +57,9 @@ public class kuir {
     		indexer c = new indexer(args[1]);
     	}
     	else if(args[0].equals("-s")) {
-    		searcher s = new searcher(args[1], args[2]);
+    		if(args[2].equals("-q")) {
+    			searcher s = new searcher(args[1], args[3]);
+    		}
     	}
     	else {
     		System.out.println("올바르지 않은 명령");

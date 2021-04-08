@@ -25,9 +25,16 @@ import org.xml.sax.SAXException;
 
 public class searcher {
 	
-	searcher(String inputQuery, String inputPost) throws IOException, ClassNotFoundException, ParserConfigurationException, SAXException{
+	searcher(String inputPost, String inputQuery) throws ClassNotFoundException, IOException, ParserConfigurationException, SAXException {
 		
-		String query = inputQuery;
+		CalcSim(inputPost,inputQuery);
+		System.out.println("0");
+		
+	}
+	
+		
+	public void CalcSim(String Post, String Query) throws IOException, ClassNotFoundException, ParserConfigurationException, SAXException{
+		String query = Query;
 		
 		KeywordExtractor ke1 = new KeywordExtractor();
 		
@@ -57,7 +64,7 @@ public class searcher {
 		//System.out.println(queryCount); 1 1 1 1 
 		
 		
-		String inputFile = inputPost; 
+		String inputFile = Post; 
 				//"C:\\Users\\dusk3\\Desktop\\index.post";
 		
 		FileInputStream fileStream = new FileInputStream(inputFile);
@@ -228,10 +235,6 @@ public class searcher {
 				else {}
 			}
 		}
-		
-		
-		
-		
 	}
 	
 	
