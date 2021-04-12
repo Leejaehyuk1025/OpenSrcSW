@@ -27,12 +27,12 @@ public class searcher {
 	
 	searcher(String inputPost, String inputQuery) throws ClassNotFoundException, IOException, ParserConfigurationException, SAXException {
 		
-		CalcSim(inputPost,inputQuery);
+		innerProduct(inputPost,inputQuery);
 		
 	}
 	
 		
-	public void CalcSim(String Post, String Query) throws IOException, ClassNotFoundException, ParserConfigurationException, SAXException{
+	public void innerProduct(String Post, String Query) throws IOException, ClassNotFoundException, ParserConfigurationException, SAXException{
 		String query = Query;
 		
 		KeywordExtractor ke1 = new KeywordExtractor();
@@ -78,13 +78,21 @@ public class searcher {
 		
 		double[] totalImportant = new double[5];
 		
+
+		double cosineSimilarity1 = 0;
+		double cosineSimilarity2 = 0;
+		
+
 		for(String a : queryWord) {
 			if(hashMap.containsKey(a)) {
 				ArrayList<Double> arraylist = (ArrayList<Double>) hashMap.get(a);
 				Iterator<Double> ait2 = arraylist.iterator();
 				
 				int numm = queryCount.get(queryWord.indexOf(a));
+
+				cosineSimilarity1 += numm*numm;
 				
+
 				ArrayList<Double> docNum = new ArrayList<Double>();
 	    		ArrayList<Double> docCount = new ArrayList<Double>();
 		    	while(ait2.hasNext()) {
@@ -95,22 +103,45 @@ public class searcher {
 		    	if(docNum.contains(0.0)) {
 		    		Double temp = docCount.get(docNum.indexOf(0.0));
 		    		totalImportant[0]+= numm*temp;
+  		
+		    		cosineSimilarity2 = temp*temp;
+		    		
+
 		    	}
 		    	if(docNum.contains(1.0)) {
 		    		Double temp = docCount.get(docNum.indexOf(1.0));
 		    		totalImportant[1]+=numm*temp;
+  		
+		    		cosineSimilarity2 = temp*temp;
+		    		
+
 		    	}
 		    	if(docNum.contains(2.0)) {
 		    		Double temp = docCount.get(docNum.indexOf(2.0));
 		    		totalImportant[2]+=numm*temp;
+
+		    		
+		    		cosineSimilarity2 = temp*temp;
+		    		
+
 		    	}
 		    	if(docNum.contains(3.0)) {
 		    		Double temp = docCount.get(docNum.indexOf(3.0));
 		    		totalImportant[3]+=numm*temp;
+
+		    		
+		    		cosineSimilarity2 = temp*temp;
+		    		
+
 		    	}
 		    	if(docNum.contains(4.0)) {
 		    		Double temp = docCount.get(docNum.indexOf(4.0));
 		    		totalImportant[4]+=numm*temp;
+
+		    		
+		    		cosineSimilarity2 = temp*temp;
+		    		
+
 		    	}
 		    	
 		    	
@@ -118,6 +149,12 @@ public class searcher {
 			}
 		}
 		
+
+		for(int i=0;i<5;i++) {
+    		totalImportant[i] = totalImportant[i] / (Math.sqrt(cosineSimilarity1)*Math.sqrt(cosineSimilarity2)); 
+    	}
+		
+
 		//System.out.println(totalImportant[0]);
 		//System.out.println(totalImportant[1]);
 		//System.out.println(totalImportant[2]);
