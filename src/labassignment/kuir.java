@@ -43,14 +43,7 @@ import java.io.FileReader;
 
  
 public class kuir {
-    public static void main(String[] args) throws IOException, TransformerException, ParserConfigurationException, SAXException, XPathExpressionException{
-    	
-    	    	
-    	
-    	if(args.length != 2) {
-    		System.out.println("Fail");
-    		System.exit(0);
-    	}
+    public static void main(String[] args) throws IOException, TransformerException, ParserConfigurationException, SAXException, XPathExpressionException, ClassNotFoundException{
     	
     	if(args[0].equals("-c")) {
     		makeCollection a = new makeCollection(args[1]);
