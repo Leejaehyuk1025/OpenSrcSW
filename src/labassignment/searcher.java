@@ -28,7 +28,6 @@ public class searcher {
 	searcher(String inputPost, String inputQuery) throws ClassNotFoundException, IOException, ParserConfigurationException, SAXException {
 		
 		CalcSim(inputPost,inputQuery);
-		System.out.println("0");
 		
 	}
 	
