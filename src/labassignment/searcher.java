@@ -47,8 +47,8 @@ public class searcher {
 		
 		//라면  1    면   1  분말   1  스프  1
 		
-		ArrayList<String> queryWord = new ArrayList<String>();
-		ArrayList<Integer> queryCount = new ArrayList<Integer>();
+		ArrayList<String> queryWord = new ArrayList<String>(); //query 단어들
+		ArrayList<Integer> queryCount = new ArrayList<Integer>(); // query 단어들의 빈도
 		
 		
 		
@@ -76,7 +76,7 @@ public class searcher {
 		Iterator<String> it = hashMap.keySet().iterator();
 		
 		
-		double[] totalImportant = new double[5];
+		double[] totalImportant = new double[5]; //순위
 		
 
 		double cosineSimilarity1 = 0;
@@ -90,11 +90,11 @@ public class searcher {
 				
 				int numm = queryCount.get(queryWord.indexOf(a));
 
-				cosineSimilarity1 += numm*numm;
+				//cosineSimilarity1 += numm*numm;
 				
 
-				ArrayList<Double> docNum = new ArrayList<Double>();
-	    		ArrayList<Double> docCount = new ArrayList<Double>();
+				ArrayList<Double> docNum = new ArrayList<Double>(); // 아이디 지정 ex) 1.0  2.0 ...
+	    		ArrayList<Double> docCount = new ArrayList<Double>();  // 가중치 저장
 		    	while(ait2.hasNext()) {
 		    		docNum.add(ait2.next());
 		    		docCount.add(ait2.next());
