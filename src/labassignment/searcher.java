@@ -35,6 +35,7 @@ public class searcher {
 	public void CalcSim(String Post, String Query) throws IOException, ClassNotFoundException, ParserConfigurationException, SAXException{
 		String query = Query;
 		
+		
 		KeywordExtractor ke1 = new KeywordExtractor();
 		
 		KeywordList kl1 = ke1.extractKeyword(query, true);
@@ -75,12 +76,96 @@ public class searcher {
 		HashMap hashMap = (HashMap) object;
 		Iterator<String> it = hashMap.keySet().iterator();
 		
+		double[] result1 = new double[5];
+		double[] result2 = new double[5];
+		double[] result3 = new double[5];
+		for(int i =0;i<5;i++) {
+			result1[i]=0;
+			result2[i]=0;
+			result3[i]=0;
+		}
+		
+		for(String a : queryWord) {
+			if(hashMap.containsKey(a)) {
+				ArrayList<Double> arraylist = (ArrayList<Double>) hashMap.get(a);
+				Iterator<Double> ait2 = arraylist.iterator();
+				
+				ArrayList<Double> docNum = new ArrayList<Double>();
+	    		ArrayList<Double> docCount = new ArrayList<Double>();
+		    	while(ait2.hasNext()) {
+		    		docNum.add(ait2.next());
+		    		docCount.add(ait2.next());
+		    	}
+		    	
+		    	if(docNum.contains(0.0)) {
+		    		
+		    		int numm = queryCount.get(queryWord.indexOf(a)); //->1
+					result2[0]+=numm*numm;
+		    		
+		    		Double temp = docCount.get(docNum.indexOf(0.0));
+		    		result1[0]+=temp*numm;
+		    		result3[0]+=temp*temp;
+		    		
+		    	}
+		    	if(docNum.contains(1.0)) {
+		    		
+		    		int numm = queryCount.get(queryWord.indexOf(a)); //->1
+					result2[1]+=numm*numm;
+		    		
+		    		Double temp = docCount.get(docNum.indexOf(1.0));
+		    		result1[1]+=temp*numm;
+		    		result3[1]+=temp*temp;
+		    		
+		    	}
+		    	if(docNum.contains(2.0)) {
+		    		
+		    		int numm = queryCount.get(queryWord.indexOf(a)); //->1
+					result2[2]+=numm*numm;
+		    		
+		    		Double temp = docCount.get(docNum.indexOf(2.0));
+		    		result1[2]+=temp*numm;
+		    		result3[2]+=temp*temp;
+		    		
+		    	}
+		    	if(docNum.contains(3.0)) {
+		    		
+		    		int numm = queryCount.get(queryWord.indexOf(a)); //->1
+					result2[3]+=numm*numm;
+		    		
+		    		Double temp = docCount.get(docNum.indexOf(3.0));
+		    		result1[3]+=temp*numm;
+		    		result3[3]+=temp*temp;
+		    		
+		    	}
+		    	if(docNum.contains(4.0)) {
+		    		
+		    		int numm = queryCount.get(queryWord.indexOf(a)); //->1
+					result2[4]+=numm*numm;
+		    		
+		    		Double temp = docCount.get(docNum.indexOf(4.0));
+		    		result1[4]+=temp*numm;
+		    		result3[4]+=temp*temp;
+		    		
+		    	}
+		    	
+			}
+		}
+		
 		
 		double[] totalImportant = new double[5];
 		
-		double cosineSimilarity1 = 0;
-		double cosineSimilarity2 = 0;
+		for(int i=0;i<5;i++) {
+			totalImportant[i]=0;
+		}
 		
+		for(int i=0;i<5;i++) {
+			if(result2[i]!=0 && result3[i]!=0)
+				totalImportant[i] = result1[i] / Math.sqrt(result2[i]) / Math.sqrt(result3[i]);
+			//System.out.println(totalImportant[i]);
+		}
+		
+		
+		/*
 		for(String a : queryWord) {
 			if(hashMap.containsKey(a)) {
 				ArrayList<Double> arraylist = (ArrayList<Double>) hashMap.get(a);
@@ -141,7 +226,7 @@ public class searcher {
 		for(int i=0;i<5;i++) {
     		totalImportant[i] = totalImportant[i] / (Math.sqrt(cosineSimilarity1)*Math.sqrt(cosineSimilarity2)); 
     	}
-		
+		*/
 		//System.out.println(totalImportant[0]);
 		//System.out.println(totalImportant[1]);
 		//System.out.println(totalImportant[2]);
@@ -258,7 +343,10 @@ public class searcher {
 				else {}
 			}
 		}
-	}
+	
+		
+    }
+	
 	
 	
 	
